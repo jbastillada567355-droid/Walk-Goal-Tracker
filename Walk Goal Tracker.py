@@ -1,4 +1,9 @@
 stored_goals = []
+
+def show_goals():
+    for goal in stored_goals:
+        print(goal)
+
 while True:
     print("\n==== Walk Goal Tracker ====\n")
     print("1. Create a goal")
@@ -15,6 +20,7 @@ while True:
         print("Please enter an integer")
         continue
     match choice:
+
         case 1:
             print("\n===========================\n")
             title_of_goal = input("Enter goal title: ")
@@ -25,10 +31,10 @@ while True:
                     "days": days,
                     "total distance": distance * days}
             stored_goals.append(goal)
+
         case 2:
             print("\n===========================\n")
-            for goal in stored_goals:
-                print(goal)
+            show_goals()
             print("\n===========================\n")
             goal_to_edit = input("Enter title of goal to edit: ")
             for index, goal in enumerate(stored_goals):
@@ -69,19 +75,20 @@ while True:
                                     "total distance": stored_goals[index]["distance"] * days}
                             stored_goals[index] = goal
             print("edit successful")
+
         case 3:
             print("\n===========================\n")
-            for goal in stored_goals:
-                print(goal)
+            show_goals()
             goal_to_delete = input("\nEnter title of goal to delete: ")
             for index, goal in enumerate(stored_goals):
                 if goal_to_delete.lower() == goal["title"].lower():
                     del stored_goals[index]
                     print("delete successful")
+
         case 4:
             print("\n===========================\n")
-            for goal in stored_goals:
-                print(goal)
+            show_goals()
+
         case 5:
             print("\n===========================\n")
             print("shutting down program")
